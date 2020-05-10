@@ -43,9 +43,7 @@ class MenusController < ApplicationController
   def create
     menu = current_user.menus.build(menu_params)
     menu.save
-    menu = Menu.last
-    redirect_to main_menus_index_path
-    # redirect_to edit_menu_path(menu.id)
+    redirect_to edit_menu_path(menu.id)
   end
 
   def destroy

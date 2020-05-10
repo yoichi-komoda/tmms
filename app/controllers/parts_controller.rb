@@ -18,7 +18,7 @@ class PartsController < ApplicationController
     @parts.each do |part|
       part.save
     end
-    redirect_to menu_path(id: @lift.menu_id)# 閲覧画面へ
+    redirect_to edit_menu_path(id: @lift.menu_id)
   end
 
   def update

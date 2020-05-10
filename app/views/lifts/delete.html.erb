@@ -8,4 +8,4 @@
   <%= hidden_field_tag :menu_id, @menu.id %>
   <%= f.submit '選択項目を削除する', data: { confirm: '本当に削除してよろしいですか？' } %>
 <% end %>
-<%= link_to 'メインメニューに戻る', main_menus_index_path %>
+<%= link_to 'トレーニングメニュー一覧に戻る', edit_menu_path(id: @menu.id) %>
