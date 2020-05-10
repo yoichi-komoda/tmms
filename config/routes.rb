@@ -9,14 +9,21 @@ Rails.application.routes.draw do
   
   get 'helps/index', to: 'helps#index'
   
+  get 'lifts/edit', to: 'lifts#edit'
+  get 'menus/delete', to: 'menus#delete'
+  get 'lifts/delete', to: 'lifts#delete'
   get 'lifts/position', to: 'lifts#position'
-  post'lifts/position_update', to: 'lifts#position_update'
+  post 'move_higher', to: 'menus#move_higher'
+  post 'move_lower', to: 'menus#move_lower'
+  patch 'parts/update', to:'parts#update'
+  delete 'menus/destroy', to: 'menus#destroy'
+  delete 'lifts/destroy', to: 'lifts#destroy'
   
-  resourses :users, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
   
-  resourses :menus
+  resources :menus
   
-  resourses :lifts, only: [:new, :create, :edit, :update]
+  resources :lifts, only: [:new, :create, :update]
   
-  resourses :parts, only: [:new, :create, :edit, :update]
+  resources :parts, only: [:new, :create, :edit, :update]
 end

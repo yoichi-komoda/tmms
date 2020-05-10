@@ -1,2 +1,30 @@
-<h1>Menus#edit</h1>
-<p>Find me in app/views/menus/edit.html.erb</p>
+<h1><%= @menu.name %></h1>
+<%= form_with(url: lifts_edit_path, method: :get, local: true) do |f| %>
+  <% position_number = 1 %>
+  <%= link_to '種目を追加する', new_lift_path(id: @menu.id, position: position_number) %>
+  <br>
+  <% @lifts.each do |lift| %>
+    <% position_number += 1%>
+    <ul>
+      <li><input type="radio" name="lift_edit" value="<%= lift.id %>"><%= lift.position %>.<%= lift.name %></li>
+      <li>（<%= lift.set_count %>set・インターバル）</li>
+    </ul>
+      <table>
+        <% part_count = 1 %>
+        <% lift.parts.order(id: :asc).each do |part| %>
+        <tr>
+          <td><%= part_count %>set：</td>
+          <td><%= part.reps %>回：</td>
+          <td><%= part.weight %>kg</td>
+        </tr>
+        <% part_count += 1%>
+        <% end %> <!-- partのeach -->
+      </table>
+    <%= link_to '種目を追加する', new_lift_path(id: @menu.id, position: position_number) %>
+    <br>
+  <% end %>
+  <%= link_to '並替',lifts_position_path(id: @menu.id) %>
+  <%= f.submit '編集する' %>
+  <%= link_to '削除',lifts_delete_path(id: @menu.id) %>
+<% end %>
+<%= link_to 'メインメニューに戻る', main_menus_index_path %>

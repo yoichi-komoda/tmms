@@ -1,2 +1,20 @@
-<h1>Menus#show</h1>
-<p>Find me in app/views/menus/show.html.erb</p>
+<h1><%= @menu.name %></h1>
+<% @lifts.each do |lift| %>
+  <ul>
+    <li><%= lift.position %>.<%= lift.name %></li>
+    <li><%= lift.set_count %>set・インターバル<%= lift.interval %>秒</li>
+  </ul>
+  <table>
+    <% part_count = 1 %>
+    <% lift.parts.order(id: :asc).each do |part| %>
+    <tr>
+      <td><%= part_count %>set：</td>
+      <td><%= part.reps %>回：</td>
+      <td><%= part.weight %>kg</td>
+    </tr>
+    <% part_count += 1%>
+    <% end %> <!-- partのeach -->
+  </table>
+  <hr>
+<% end %> <!-- liftのeach -->
+<%= link_to 'トレーニング終了', menus_path %>

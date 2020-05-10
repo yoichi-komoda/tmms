@@ -1,2 +1,26 @@
-<h1>Lifts#new</h1>
-<p>Find me in app/views/lifts/new.html.erb</p>
+<h1><%= @menu.name %></h1>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @lift, local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :name, '種目名：' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :set_count, 'Set数：' %>
+        <%= f.number_field :set_count, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :interval, 'インターバル：' %>
+        <%= f.number_field :interval, class: 'form-control' %>
+      </div>
+      <%= hidden_field_tag :menu_id, @menu.id %>
+      <%= hidden_field_tag :position, @position %>
+      <%= f.submit '次へ', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

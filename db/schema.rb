@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_123347) do
+ActiveRecord::Schema.define(version: 2020_04_30_082835) do
 
   create_table "lifts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "set_count"
-    t.time "interval"
     t.integer "position"
     t.bigint "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "interval"
     t.index ["menu_id"], name: "index_lifts_on_menu_id"
   end
 
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_123347) do
   end
 
   create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "part_number"
     t.integer "reps"
     t.integer "weight"
     t.bigint "lift_id"

@@ -1,2 +1,39 @@
-<h1>Parts#edit</h1>
-<p>Find me in app/views/parts/edit.html.erb</p>
+<h1><%= @menu.name %></h1>
+<p><%= @lift.name %></p>
+<div>
+  <div>
+    <%= form_with(url: parts_update_path, method: :patch, local: true) do |f| %>
+    <% count = 1 %>
+       <% @parts.each do |part|%>
+        <table>
+         <%= fields_for "part[]" , part do |field| %>
+         <tr>
+           <td>
+             <%= count %>set目：
+           </td>
+           <td>
+             <div>
+               <%= field.number_field "reps" %>
+             </div>
+           </td>
+           <td>回</td>
+         </tr>
+         <tr>
+           <td></td>
+           <td>
+             <div>
+               <%= field.number_field "weight" %>
+             </div>
+           </td>
+           <td>kg</td>
+         </tr>
+         <% end %> <!-- field_for -->
+        </table>
+        <hr>
+        <% count += 1 %>
+        <% end %> <!-- each -->
+      <%= hidden_field_tag :lift_id, @lift.id %>
+      <%= f.submit '確定' %>
+    <% end %> <!-- form_with -->
+  </div>
+</div>

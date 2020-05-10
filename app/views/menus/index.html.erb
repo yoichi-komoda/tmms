@@ -1,2 +1,8 @@
-<h1>Menus#index</h1>
-<p>Find me in app/views/menus/index.html.erb</p>
+<h1>トレーニングメニュー一覧</h1>
+<% @menus_and_required.each do |mar| %>
+  <ul>
+    <li><%= mar[0].name %></li>
+    <li>所要時間約<%= mar[1] %>分</li>
+    <li><%= link_to '閲覧する', menu_path(mar[0].id)  %><%= link_to '編集する', edit_menu_path(mar[0].id) %></li>
+  </ul>
+<% end %>
