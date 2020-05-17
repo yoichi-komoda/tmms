@@ -2,7 +2,9 @@
 <%= form_with(url: lifts_destroy_path, method: :delete, local: true) do |f| %>
   <ul>
     <% @lifts.each do |lift| %>
-      <li><%= check_box_tag "deletes[]", lift.id %><%= lift.name %></li>
+      <div>
+        <li><%= check_box_tag "deletes[]", lift.id %><%= label_tag :deletes_, lift.name %></li>
+      </div>
     <% end %>
   </ul>
   <%= hidden_field_tag :menu_id, @menu.id %>

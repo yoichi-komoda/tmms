@@ -1,19 +1,25 @@
-<h1><%= @menu.name %></h1>
-<table>
-  <% @lifts.each do |lift| %>
-    <tr>
-      <td><% if lift.first? %>
-  			&nbsp;
-  		<% else %>
-  			<%= link_to '↑', move_higher_path(id: lift.id), method: :post %>
-  		<% end %></td>
-      <td><%= lift.name %></td>
-      <td><% if lift.last? %>
-  			&nbsp;
-  		<% else %>
-  			<%= link_to '↓', move_lower_path(id: lift.id), method: :post %>
-  		<% end %></td>
-    </tr>
-  <% end %>
-</table>
-<%= link_to '確定', edit_menu_path(id: @menu.id) %>
+<div class="text-center">
+  <h1><%= @menu.name %></h1>
+  <table align="center">
+    <% @lifts.each do |lift| %>
+      <tr>
+        <td><% if lift.first? %>
+    			&nbsp;
+    		<% else %>
+    			<%= link_to move_higher_path(id: lift.id), method: :post do %>
+    			<i class="fas fa-chevron-circle-up"></i>
+    			<% end %>
+    		<% end %></td>
+        <td><%= lift.name %></td>
+        <td><% if lift.last? %>
+    			&nbsp;
+    		<% else %>
+    			<%= link_to move_lower_path(id: lift.id), method: :post do %>
+    			<i class="fas fa-chevron-circle-down"></i>
+    			<% end %>
+    		<% end %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to '確定', edit_menu_path(id: @menu.id), class: 'btn btn-primary col-lg-8 offset-lg-2 mt-4' %>
+</div>

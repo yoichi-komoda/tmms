@@ -1,20 +1,26 @@
+<div class="text-center">
 <h1><%= @menu.name %></h1>
 <% @lifts.each do |lift| %>
   <ul>
     <li><%= lift.position %>.<%= lift.name %></li>
     <li><%= lift.set_count %>set・インターバル<%= lift.interval %>秒</li>
   </ul>
-  <table>
-    <% part_count = 1 %>
-    <% lift.parts.order(id: :asc).each do |part| %>
-    <tr>
-      <td><%= part_count %>set：</td>
-      <td><%= part.reps %>回：</td>
-      <td><%= part.weight %>kg</td>
-    </tr>
-    <% part_count += 1%>
-    <% end %> <!-- partのeach -->
-  </table>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <table>
+        <% part_count = 1 %>
+        <% lift.parts.order(id: :asc).each do |part| %>
+        <tr>
+          <td><%= part_count %>set：</td>
+          <td><%= part.reps %>回：</td>
+          <td><%= part.weight %>kg</td>
+        </tr>
+        <% part_count += 1%>
+        <% end %> <!-- partのeach -->
+      </table>
+    </div>
+  </div>
   <hr>
 <% end %> <!-- liftのeach -->
-<%= link_to 'トレーニング終了', menus_path %>
+<%= link_to 'トレーニング終了', menus_path, class: 'btn btn-primary col-lg-8 offset-lg-2 mb-2' %>
+</div>

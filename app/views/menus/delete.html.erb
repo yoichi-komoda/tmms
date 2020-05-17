@@ -1,9 +1,11 @@
-<h1>トレーニングメニュー削除</h1>
-<%= form_with(url: menus_destroy_path, method: :delete, local: true) do |f| %>
-  <ul>
-    <% @menus.each do |menu| %>
-      <li><%= check_box_tag "deletes[]", menu.id %><%= menu.name %></li>
-    <% end %>
-  </ul>
-  <%= f.submit '選択項目を削除する', data: { confirm: '本当に削除してよろしいですか？' } %>
-<% end %>
+<div class="text-center">
+  <h1>トレーニングメニュー削除</h1>
+  <%= form_with(url: menus_destroy_path, method: :delete, local: true) do |f| %>
+    <ul>
+      <% @menus.each do |menu| %>
+        <li><%= check_box_tag "deletes[]", menu.id %><%= menu.name %></li>
+      <% end %>
+    </ul>
+    <%= f.submit '選択項目を削除する', data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-primary col-lg-8 offset-lg-2' %>
+  <% end %>
+</div>

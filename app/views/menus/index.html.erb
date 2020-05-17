@@ -1,8 +1,10 @@
-<h1>トレーニングメニュー一覧</h1>
-<% @menus_and_required.each do |mar| %>
-  <ul>
-    <li><%= mar[0].name %></li>
-    <li>所要時間約<%= mar[1] %>分</li>
-    <li><%= link_to '閲覧する', menu_path(mar[0].id)  %><%= link_to '編集する', edit_menu_path(mar[0].id) %></li>
-  </ul>
-<% end %>
+<div class="text-center">
+  <h1>トレーニングメニュー一覧</h1>
+  <% @menus_and_required.each do |mar| %>
+    <ul style="padding: 0;">
+      <li style="font-size: 30px;"><%= mar[0].name %></li>
+      <li style="font-size: 20px;">所要時間約<%= mar[1] %>分</li>
+      <li><%= link_to '閲覧する', menu_path(mar[0].id), class: 'btn btn-primary mr-1' %><%= link_to '編集する', edit_menu_path(mar[0].id), class: 'btn btn-success' %></li>
+    </ul>
+  <% end %>
+</div>
