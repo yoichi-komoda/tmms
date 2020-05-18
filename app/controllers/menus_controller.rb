@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  before_action :require_user_logged_in
+  
   def index
     @menus = current_user.menus
     @menus_and_required = []

@@ -5,9 +5,9 @@
     <li><%= lift.position %>.<%= lift.name %></li>
     <li><%= lift.set_count %>set・インターバル<%= lift.interval %>秒</li>
   </ul>
-  <div class="row">
-    <div class="col-6 offset-3">
-      <table>
+  <!--<div class="row">-->
+  <!--  <div class="col-6 offset-3">-->
+      <table align="center" class="table table-striped">
         <% part_count = 1 %>
         <% lift.parts.order(id: :asc).each do |part| %>
         <tr>
@@ -18,9 +18,9 @@
         <% part_count += 1%>
         <% end %> <!-- partのeach -->
       </table>
-    </div>
-  </div>
+  <!--  </div>-->
+  <!--</div>-->
   <hr>
 <% end %> <!-- liftのeach -->
-<%= link_to 'トレーニング終了', menus_path, class: 'btn btn-primary col-lg-8 offset-lg-2 mb-2' %>
+<%= link_to 'トレーニング終了', menus_path, class: 'btn btn-primary col-lg-8 mb-2' %>
 </div>

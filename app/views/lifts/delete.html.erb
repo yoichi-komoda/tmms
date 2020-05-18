@@ -1,13 +1,19 @@
-<h1><%= @menu.name %></h1>
+<h1 class="text-center"><%= @menu.name %></h1>
 <%= form_with(url: lifts_destroy_path, method: :delete, local: true) do |f| %>
-  <ul>
+  <table align="center">
     <% @lifts.each do |lift| %>
       <div>
-        <li><%= check_box_tag "deletes[]", lift.id %><%= label_tag :deletes_, lift.name %></li>
+        <tr>
+          <td>
+            <%= check_box_tag "deletes[]", lift.id %><%= label_tag :deletes_, lift.name %>
+          </td>
+        </tr>
       </div>
     <% end %>
-  </ul>
+  </table>
   <%= hidden_field_tag :menu_id, @menu.id %>
-  <%= f.submit '選択項目を削除する', data: { confirm: '本当に削除してよろしいですか？' } %>
+  <div class="text-center">
+  <%= f.submit '選択項目を削除する', data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-primary col-lg-8' %>
 <% end %>
-<%= link_to 'トレーニングメニュー一覧に戻る', edit_menu_path(id: @menu.id) %>
+<%= link_to 'トレーニングメニュー一覧に戻る', edit_menu_path(id: @menu.id), class: 'btn btn-primary col-lg-8 mt-2' %>
+  </div>

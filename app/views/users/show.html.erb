@@ -1,7 +1,10 @@
-<h1>アカウント情報</h1>
-<h1>お名前</h1>
-<%= current_user.name %>
-<h1>メールアドレス</h1>
-<%= current_user.email %>
-<br>
-<%= link_to '編集する', edit_user_path(id: current_user.id) %>
+<div class="text-center">
+  <h1>アカウント情報</h1>
+  <h2>お名前</h1>
+  <%= current_user.name %>
+  <h2>メールアドレス</h1>
+  <%= current_user.email %>
+  <br>
+  <%= link_to '編集する', edit_user_path(id: current_user.id), class: "btn btn-primary col-lg-8 mt-2" %>
+  
+</div>

@@ -1,4 +1,6 @@
 class LiftsController < ApplicationController
+  before_action :require_user_logged_in
+  
   def edit
     @lift = Lift.find(params[:lift_edit])
     @menu = Menu.find(@lift.menu_id)
